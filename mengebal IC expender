@@ -1,0 +1,206 @@
+✅ IC yang Benar untuk Menambah Pin Arduino
+
+Kalau tujuanmu menambah pin digital, gunakan salah satu ini:
+
+1. PCF8574P (I2C) → Recommended
+
+Tambah 8 pin
+
+Hanya pakai 2 kabel (SDA, SCL)
+
+2. MCP23017 (I2C) → Lebih bagus
+
+Tambah 16 pin
+
+Lebih cepat dan fleksibel
+
+3. 74HC595 (Shift Register)
+
+Tambah pin output saja
+
+Sangat populer
+
+4. 74HC165
+
+Untuk tambah pin input
+
+
+
+	CARA WIRING IC EXPENDER
+
+1️⃣ PCF8574P (I2C – 8 Pin Tambahan)
+
+Chip I/O expander berbasis I2C.
+
+📌 Pin PCF8574
+VCC
+GND
+SDA
+SCL
+A0 A1 A2 (alamat I2C)
+P0–P7 (pin I/O)
+🔌 Wiring ke Arduino Uno
+PCF8574	Arduino Uno
+VCC	5V
+GND	GND
+SDA	A4
+SCL	A5
+🔌 Wiring ke ESP32
+PCF8574	ESP32
+VCC	3.3V
+GND	GND
+SDA	GPIO21
+SCL	GPIO22
+🔌 Wiring ke ESP8266 (NodeMCU)
+PCF8574	ESP8266
+VCC	3.3V
+GND	GND
+SDA	D2 (GPIO4)
+SCL	D1 (GPIO5)
+⚠️ Penting
+
+PCF8574 bisa jalan di 3.3V dan 5V
+
+Sesuaikan VCC dengan board
+
+Biasanya sudah ada pull-up resistor di modul
+
+2️⃣ MCP23017 (I2C – 16 Pin Tambahan)
+
+Lebih powerful dari PCF8574.
+
+📌 Pin utama
+VCC
+GND
+SDA
+SCL
+A0 A1 A2
+GPA0–GPA7
+GPB0–GPB7
+🔌 Wiring sama seperti PCF8574 (I2C)
+Arduino
+
+SDA → A4
+
+SCL → A5
+
+ESP32
+
+SDA → GPIO21
+
+SCL → GPIO22
+
+ESP8266
+
+SDA → D2
+
+SCL → D1
+
+⚠️ Catatan
+
+MCP23017 bisa 3.3V dan 5V
+
+Jangan campur 5V ke ESP32/8266
+
+3️⃣ 74HC595 (Shift Register – Output Only)
+
+Tambah 8 pin OUTPUT.
+
+📌 Pin penting
+DS  (Data)
+SH_CP (Clock)
+ST_CP (Latch)
+OE
+MR
+Q0–Q7 (Output)
+🔌 Wiring ke Arduino
+74HC595	Arduino
+VCC	5V
+GND	GND
+DS	Pin 11
+SH_CP	Pin 13
+ST_CP	Pin 10
+🔌 Wiring ke ESP32 (contoh)
+74HC595	ESP32
+VCC	3.3V
+GND	GND
+DS	GPIO23
+SH_CP	GPIO18
+ST_CP	GPIO5
+🔌 Wiring ke ESP8266
+74HC595	ESP8266
+VCC	3.3V
+GND	GND
+DS	D7
+SH_CP	D5
+ST_CP	D8
+⚠️ Penting
+
+74HC595 harus pakai resistor untuk LED
+
+Bisa di-chain (seri) untuk tambah banyak output
+
+4️⃣ 74HC165 (Shift Register – Input Only)
+
+Untuk membaca banyak tombol / sensor digital.
+
+📌 Pin utama
+PL (Load)
+CP (Clock)
+Q7 (Data Out)
+CE
+🔌 Wiring dasar
+Arduino
+74HC165	Arduino
+VCC	5V
+GND	GND
+PL	Pin 8
+CP	Pin 12
+Q7	Pin 11
+ESP32
+
+Gunakan 3 GPIO bebas:
+
+PL → GPIO5
+
+CP → GPIO18
+
+Q7 → GPIO19
+
+ESP8266
+
+PL → D6
+
+CP → D5
+
+Q7 → D7
+
+🎯 Mana yang Sebaiknya Dipakai?
+Kebutuhan	Rekomendasi
+Tambah banyak tombol	MCP23017
+Tambah banyak LED	74HC595
+Hemat kabel	I2C (PCF / MCP)
+Proyek profesional	MCP23017
+🚨 Saran untuk ESP32 & ESP8266
+
+Gunakan 3.3V saja untuk:
+
+PCF8574
+
+MCP23017
+
+74HC595
+
+74HC165
+
+Jangan pakai 5V logic langsung ke ESP.
+
+Kalau kamu kasih tau:
+
+Mau tambah berapa tombol?
+
+Mau tambah berapa LED?
+
+Pakai board apa?
+
+Saya bisa buatkan wiring yang paling efisien + contoh codingnya sekalian 🔥
