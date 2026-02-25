@@ -25,17 +25,6 @@ Sangat populer
 Untuk tambah pin input
 
 
-          PERBANDINGAN
-
-| IC       | Fungsi                 |
-| -------- | ---------------------- |
-| FA5502P  | PWM power controller ❌ |
-| PCF8574P | I/O expander ✅         |
-| MCP23017 | I/O expander ✅         |
-| 74HC595  | Output expander ✅      |
-
-
-
 
 	CARA WIRING IC EXPENDER
 
