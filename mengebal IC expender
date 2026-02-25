@@ -1,0 +1,25 @@
+✅ IC yang Benar untuk Menambah Pin Arduino
+
+Kalau tujuanmu menambah pin digital, gunakan salah satu ini:
+
+1. PCF8574P (I2C) → Recommended
+
+Tambah 8 pin
+
+Hanya pakai 2 kabel (SDA, SCL)
+
+2. MCP23017 (I2C) → Lebih bagus
+
+Tambah 16 pin
+
+Lebih cepat dan fleksibel
+
+3. 74HC595 (Shift Register)
+
+Tambah pin output saja
+
+Sangat populer
+
+4. 74HC165
+
+Untuk tambah pin input
